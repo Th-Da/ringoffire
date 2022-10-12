@@ -10,14 +10,14 @@ import { NavigationService } from '../navigation.service';
 export class StartComponent implements OnInit {
   /* router: any; */
 
-  constructor(public navServ: NavigationService) { };
+  constructor(private router: Router) { };
 
   ngOnInit(): void {
   }
 
 
   newGame() {
-
+    this.router.navigateByUrl('/game');
   }
 
 }
