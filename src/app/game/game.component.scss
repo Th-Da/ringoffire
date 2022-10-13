@@ -29,7 +29,7 @@
 
 .pick-card {
     animation: pic-card-animation 1.25s ease-in-out;
-    transform: scale(1-7) translateX(140px) translateY(-180px);
+    transform: scale(1-7) translateX(140px) translateY(-180px) rotate(-10deg);
 
 }
 
@@ -47,6 +47,6 @@
     }
 
     100% {
-        transform: scale(1.7) translateX(140px) translateY(-180px);
+        transform: scale(1.7) translateX(140px) translateY(-180px) rotate(-10deg);
     }
 }
