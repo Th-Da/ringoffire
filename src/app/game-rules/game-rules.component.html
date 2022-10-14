@@ -1,7 +1,4 @@
 <mat-card>
-    <mat-card-title>Titel</mat-card-title>
-
-    <mat-card-content>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam delectus officia ipsam debitis
-        repellendus, quam quisquam voluptatibus provident omnis odio, vitae corrupti placeat esse quas nesciunt? Eius
-        nulla pariatur voluptatum.</mat-card-content>
+    <mat-card-title>{{ card ? title : 'Pick card' }}</mat-card-title>
+    <mat-card-content>{{ card ? description : 'Please click on the stack to select the next card' }}</mat-card-content>
 </mat-card>
