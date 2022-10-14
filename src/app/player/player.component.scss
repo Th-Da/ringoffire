@@ -2,9 +2,8 @@
     display: flex;
     align-items: center;
     width: 300px;
-    backdrop-filter: blur(2px);
-    background-color: white;
     border-radius: 50px 0 0 50px;
+    background-color: rgba(50, 50, 50, 0.8);
 
     span {
         font-size: 32px;
@@ -12,9 +11,13 @@
     }
 
     img {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
         object-fit: contain;
         border-radius: 100%;
     }
+}
+
+.player-active {
+    background-color: white !important;
 }
