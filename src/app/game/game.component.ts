@@ -11,7 +11,7 @@ import { RoomFullNoticeComponent } from '../room-full-notice/room-full-notice.co
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss', './game-media.component.scss']
 })
 export class GameComponent implements OnInit, OnDestroy {
   pickCardAnimation = false;
@@ -38,10 +38,10 @@ export class GameComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
     dialogRef.afterClosed().subscribe(name => {
-      if (this.game.players.length > 3) {
+     /*  if (this.game.players.length > 3) {
         this.dialog.open(RoomFullNoticeComponent);
       }
-      else if (name && name.length > 0) {
+      else */ if (name && name.length > 0) {
         this.game.players.push(name);
       }
     });
