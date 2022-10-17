@@ -1,7 +1,47 @@
+:host {
+    position: absolute;
+    bottom: 32px;
+    left: 100px;
+    right: 100px;
+}
+
+mat-panel-description {
+    font-size: 8px;
+}
+
+/* mat-expansion-panel-header mat-content span {
+    display: flex;
+    flex-direction: column !important;
+    overflow: auto;
+} */
+
+p {
+    height: 200px;
+}
+
+.description-card {
+    display: block !important;
+}
+
+
 @media (max-width: 600px) {
     :host {
         max-height: 100px;
-        overflow: scroll;
+        overflow-y: scroll;
+    }
+}
 
+@media (max-height: 500px) {
+    :host {
+        left: 175px;
+        max-height: 100px;
+        overflow-y: scroll;
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    :host {
+        left: 24px;
     }
 }

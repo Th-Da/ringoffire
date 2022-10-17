@@ -1,4 +1,16 @@
-<mat-card>
+<mat-card *ngIf="srcreenHeigt > 400px">
     <mat-card-title>{{ card ? title : 'Pick card' }}</mat-card-title>
     <mat-card-content>{{ card ? description : 'Please click on the stack to select the next card' }}</mat-card-content>
 </mat-card>
+
+<mat-expansion-panel *ngIf="srcreenHeigt <= 400px" hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{ card ? title : 'Pick a card' }}
+        </mat-panel-title>
+        <mat-panel-description>
+            tap to open/close
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{card ? description: 'Pick a card to see what you have to do'}}</p>
+</mat-expansion-panel>

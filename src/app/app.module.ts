@@ -18,6 +18,9 @@ import { GameRulesComponent } from './game-rules/game-rules.component';
 import { MatCardModule } from '@angular/material/card';
 import { DialogNoticeComponent } from './dialog-notice/dialog-notice.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { RoomFullNoticeComponent } from './room-full-notice/room-full-notice.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     PlayerComponent,
     DialogAddPlayerComponent,
     GameRulesComponent,
-    DialogNoticeComponent
+    DialogNoticeComponent,
+
+    RoomFullNoticeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
+    MatExpansionModule,
     MatFormFieldModule,
     FormsModule,
     MatCardModule,

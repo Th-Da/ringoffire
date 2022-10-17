@@ -5,6 +5,8 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { DialogNoticeComponent } from '../dialog-notice/dialog-notice.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { RoomFullNoticeComponent } from '../room-full-notice/room-full-notice.component';
+
 
 @Component({
   selector: 'app-game',
@@ -18,22 +20,7 @@ export class GameComponent implements OnInit, OnDestroy {
   destroyed = new Subject<void>();
 
   constructor(public dialog: MatDialog) {
-    /*  breakpointObserver
-       .observe([
-         Breakpoints.XSmall,
-         Breakpoints.Small,
-         Breakpoints.Medium,
-         Breakpoints.Large,
-         Breakpoints.XLarge,
-       ])
-       .pipe(takeUntil(this.destroyed))
-       .subscribe(result => {
-         for (const query of Object.keys(result.breakpoints)) {
-           if (result.breakpoints[query]) {
-             this.currentScreenSize = this.currentScreenSize;
-           }
-         }
-       }); */
+
   }
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
@@ -51,7 +38,10 @@ export class GameComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
     dialogRef.afterClosed().subscribe(name => {
-      if (name && name.length > 0) {
+      if (this.game.players.length > 3) {
+        this.dialog.open(RoomFullNoticeComponent);
+      }
+      else if (name && name.length > 0) {
         this.game.players.push(name);
       }
     });

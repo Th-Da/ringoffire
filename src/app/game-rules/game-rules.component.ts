@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
+
 @Component({
   selector: 'app-game-rules',
   templateUrl: './game-rules.component.html',
@@ -25,7 +26,9 @@ export class GameRulesComponent implements OnInit, OnChanges {
   title: string = '';
   description: string = '';
   @Input() card: string;
-
+  srcreenHeigt = screen.height;
+  screenwidth = screen.width;
+  panelOpenState = false;
 
   constructor() { }
 
@@ -33,6 +36,8 @@ export class GameRulesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.srcreenHeigt = screen.height;
+    this.screenwidth = screen.width;
     if (this.card) {
       let cardNumber = +this.card.split('_')[1];
       this.title = this.cardAction[cardNumber - 1].title;
