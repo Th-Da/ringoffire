@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { GameRulesComponent } from './game-rules/game-rules.component';
 import { MatCardModule } from '@angular/material/card';
+import { DialogNoticeComponent } from './dialog-notice/dialog-notice.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    GameRulesComponent
+    GameRulesComponent,
+    DialogNoticeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
+    LayoutModule,
     BrowserAnimationsModule
   ],
   providers: [],

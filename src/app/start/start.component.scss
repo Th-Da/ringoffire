@@ -1,19 +1,41 @@
 .start-screen {
     height: 100vh;
+    width: 100vw;
     max-width: 100%;
     background-image: url("/assets/img/background/ring_of_fire.jpg");
     background-size: cover;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
-    img {
-        object-fit: cover;
-        width: 100vw;
-    }
+    flex-direction: column;
 }
 
 button {
-    height: 100px;
-    z-index: 1;
+    height: 80px;
+    width: 150px;
+    display: inline-block;
+    outline: currentcolor none 0px;
+    border: 0px none;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background-image: linear-gradient(to right, rgb(254 136 0), rgb(218 97 3));
+    border-radius: 50px;
+    padding: 16px 18px 15px;
+    white-space: nowrap;
+}
+
+h1 {
+    color: #fcb702;
+    font-family: Georgia, serif;
+    font-size: 31px;
+    letter-spacing: 6px;
+    word-spacing: 6px;
+    font-weight: 700;
+    text-decoration: rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: capitalize;
+
 }

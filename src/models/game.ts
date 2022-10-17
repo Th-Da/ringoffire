@@ -29,6 +29,5 @@ export function shuffle<T>(array: T[]): T[] {
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
     }
-
     return array;
 };

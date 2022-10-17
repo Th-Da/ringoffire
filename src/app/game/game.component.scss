@@ -1,14 +1,9 @@
-app-player {
-    position: absolute;
-    top: 200px;
-    right: 0;
-}
-
 .field {
     height: 100vh;
     width: 100vw;
     max-width: 100%;
-    background-image: url('/assets/img/background/table.jpg');
+    background-image: url('/assets/img/background/ring_of_fire.jpg');
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,9 +23,6 @@ app-player {
     cursor: pointer;
     transition: all 125ms ease-in-out;
 
-    &:hover {
-        transform: scale(1.1) translateY(-10px);
-    }
 }
 
 .played-card {
@@ -74,3 +66,49 @@ app-game-rules {
     left: 100px;
     right: 100px;
 }
+
+
+
+@media (max-width: 1440px) {
+    .card-stack {
+        img {
+            width: 100px;
+        }
+    }
+
+    .played-card {
+        transform: scale(1.3) translateX(140px) translateY(-160px) rotate(-10deg);
+    }
+
+    .pick-card {
+        animation: pic-card-animation 1s ease-in-out;
+        transform: scale(1.3) translateX(140px) translateY(-160px) rotate(-10deg);
+
+    }
+
+    @keyframes pic-card-animation {
+        0% {
+            transform: scale(1);
+        }
+
+        40% {
+            transform: scale(1.3);
+        }
+
+        50% {
+            transform: scale(1.3);
+        }
+
+        100% {
+            transform: scale(1.3) translateX(140px) translateY(-160px) rotate(-10deg);
+        }
+    }
+}
+
+
+
+/* @media (max-width: 1024px) {
+    app-player {
+        top: 100px;
+    }
+} */
