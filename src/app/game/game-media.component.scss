@@ -38,10 +38,10 @@
 
 @media (max-width: 1024px) {
     .players {
-        padding-top: 48px;
+        padding-top: 24px;
         gap: 48px;
         overflow-y: auto;
-        height: 65%;
+        height: 50%;
     }
 }
 
@@ -49,15 +49,17 @@
     .players {
         padding-top: 48px;
         gap: 24px;
+        height: 50%;
+
     }
 }
 
 @media (max-height: 850px) {
     .players {
-        padding-top: 48px;
+        padding-top: 24px;
         gap: 12px;
         overflow-y: auto;
-        height: 65%;
+        height: 50%;
     }
 
 

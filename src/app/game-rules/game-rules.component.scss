@@ -27,12 +27,13 @@ mat-expansion-panel-header {
     :host {
         max-height: 90px;
         overflow-y: scroll;
+        left: 24px;
+
     }
 }
 
 @media (max-height: 500px) {
     :host {
-        left: 175px;
         max-height: 90px;
         overflow-y: scroll;
         bottom: 16px;
