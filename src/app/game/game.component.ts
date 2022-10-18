@@ -32,7 +32,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   newGame() {
     this.game = new Game();
-    console.log(this.game)
   }
 
   openDialog(): void {

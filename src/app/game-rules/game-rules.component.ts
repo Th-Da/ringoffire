@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { fromEvent, Observable, Subscription } from "rxjs";
 
 
 @Component({
@@ -30,9 +31,21 @@ export class GameRulesComponent implements OnInit, OnChanges {
   screenwidth = screen.width;
   panelOpenState = false;
 
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
+
   constructor() { }
 
   ngOnInit(): void {
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
+      this.srcreenHeigt = screen.height;
+      this.screenwidth = screen.width;
+    })
+  }
+
+  ngOnDestroy() {
+    this.resizeSubscription$.unsubscribe()
   }
 
   ngOnChanges(): void {

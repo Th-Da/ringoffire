@@ -4,8 +4,9 @@
     max-width: 100%;
     background-image: url("/assets/img/background/ring_of_fire.jpg");
     background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
