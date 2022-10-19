@@ -10,11 +10,11 @@ mat-panel-description {
     flex-grow: 1;
 }
 
-
-mat-expansion-panel-header {
+mat-content mat-content-hide-toggle {
+    margin-right: 8px;
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: column !important;
     overflow: hidden;
 }
 

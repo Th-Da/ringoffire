@@ -57,7 +57,7 @@ export class GameComponent implements OnInit, OnDestroy {
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
         this.pickCardAnimation = false;
       }, 1000)
-    } else {
+    } else if (!this.pickCardAnimation) {
       this.dialog.open(DialogNoticeComponent);
     }
   }
