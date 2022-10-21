@@ -5,7 +5,10 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { DialogNoticeComponent } from '../dialog-notice/dialog-notice.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { RoomFullNoticeComponent } from '../room-full-notice/room-full-notice.component';
+import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,19 +22,42 @@ export class GameComponent implements OnInit, OnDestroy {
   game: Game;
   destroyed = new Subject<void>();
 
-  constructor(public dialog: MatDialog) {
+
+
+  constructor(private route: ActivatedRoute, private angularFirestore: AngularFirestore, public dialog: MatDialog) {
 
   }
+
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
     this.newGame();
+    this.route.params.subscribe((params) => {
+      console.log(params['id']);
+
+
+      this
+        .angularFirestore
+        .collection('games')
+        .doc(params['id'])
+        .valueChanges().
+        subscribe((game: any) => {
+          console.log('Game update: ', game)
+          this.game.currentPlayer = game.currentPlayer;
+          this.game.currentPlayer = game.playedCards;
+          this.game.currentPlayer = game.players;
+          this.game.currentPlayer = game.stack;
+        });
+    });
   }
 
   newGame() {
     this.game = new Game();
+    /*     this.angularFirestore
+          .collection('games')
+          .add(this.game.toJson()); */
   }
 
   openDialog(): void {

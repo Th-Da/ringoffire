@@ -20,6 +20,12 @@ import { DialogNoticeComponent } from './dialog-notice/dialog-notice.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RoomFullNoticeComponent } from './room-full-notice/room-full-notice.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+/* import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore'; */
+
 
 
 @NgModule({
@@ -31,12 +37,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DialogAddPlayerComponent,
     GameRulesComponent,
     DialogNoticeComponent,
-
     RoomFullNoticeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
@@ -46,7 +55,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     FormsModule,
     MatCardModule,
     LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    /*     provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()) */
   ],
   providers: [],
   bootstrap: [AppComponent]
