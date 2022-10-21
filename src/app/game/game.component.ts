@@ -17,10 +17,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss', './game-media.component.scss']
 })
 export class GameComponent implements OnInit, OnDestroy {
-  pickCardAnimation = false;
-  currendCard = '';
+
   game: Game;
   destroyed = new Subject<void>();
+  gameId: string;
 
 
 
@@ -36,56 +36,65 @@ export class GameComponent implements OnInit, OnDestroy {
     this.newGame();
     this.route.params.subscribe((params) => {
       console.log(params['id']);
-
+      this.gameId = params['id'];
 
       this
         .angularFirestore
         .collection('games')
-        .doc(params['id'])
+        .doc(this.gameId)
         .valueChanges().
         subscribe((game: any) => {
           console.log('Game update: ', game)
           this.game.currentPlayer = game.currentPlayer;
-          this.game.currentPlayer = game.playedCards;
-          this.game.currentPlayer = game.players;
-          this.game.currentPlayer = game.stack;
+          this.game.playedCards = game.playedCards;
+          this.game.players = game.players;
+          this.game.stack = game.stack;
+          this.game.pickCardAnimation = game.pickCardAnimation;
+          this.game.currendCard = game.currendCard;
         });
     });
   }
 
   newGame() {
     this.game = new Game();
-    /*     this.angularFirestore
-          .collection('games')
-          .add(this.game.toJson()); */
+
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
     dialogRef.afterClosed().subscribe(name => {
-     /*  if (this.game.players.length > 3) {
-        this.dialog.open(RoomFullNoticeComponent);
-      }
-      else */ if (name && name.length > 0) {
+      if (name && name.length > 0) {
         this.game.players.push(name);
+        this.saveGame();
       }
     });
   }
 
 
   takeCard() {
-    if (!this.pickCardAnimation && this.game.players.length > 1) {
-      this.currendCard = this.game.stack.pop();
-      this.pickCardAnimation = true;
+    if (!this.game.pickCardAnimation && this.game.players.length > 1) {
+      this.game.currendCard = this.game.stack.pop();
+      this.game.pickCardAnimation = true;
+      this.saveGame();
       setTimeout(() => {
-        this.game.playedCards.push(this.currendCard)
+        this.game.playedCards.push(this.game.currendCard)
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-        this.pickCardAnimation = false;
+        this.game.pickCardAnimation = false;
+        this.saveGame();
       }, 1000)
-    } else if (!this.pickCardAnimation) {
+    } else if (!this.game.pickCardAnimation) {
       this.dialog.open(DialogNoticeComponent);
     }
+  }
+
+  saveGame() {
+    this
+      .angularFirestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson());
+
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Game } from 'src/models/game';
 import { NavigationService } from '../navigation.service';
 
 @Component({
@@ -8,16 +10,22 @@ import { NavigationService } from '../navigation.service';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-  /* router: any; */
 
-  constructor(private router: Router) { };
+  constructor(private angularFirestore: AngularFirestore, private router: Router) { };
 
   ngOnInit(): void {
   }
 
 
   newGame() {
-    this.router.navigateByUrl('/game');
+    let game = new Game
+    this.angularFirestore
+      .collection('games')
+      .add(game.toJson())
+      .then((gameInfo: any) => {
+        this.router.navigateByUrl('/game/' + gameInfo.id);
+      });
   }
 
 }
+

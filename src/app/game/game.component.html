@@ -18,8 +18,8 @@
             src="/assets/img/playing_cards/playing_cards-master/{{ card }}.png" alt="">
 
         <!-- current card animation -->
-        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px;"
-            src="/assets/img/playing_cards/playing_cards-master/{{ currendCard }}.png" alt="">
+        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;"
+            src="/assets/img/playing_cards/playing_cards-master/{{ game.currendCard }}.png" alt="">
 
     </div>
 </div>
@@ -29,4 +29,4 @@
 </button>
 
 
-<app-game-rules [card]="currendCard"></app-game-rules>
+<app-game-rules [card]="game.currendCard"></app-game-rules>
