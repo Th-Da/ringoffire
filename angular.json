@@ -39,7 +39,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -109,8 +109,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "ringoffire:build:production",
-            "firebaseProject": "ring-of-fire-2e235",
-            "firebaseHostingSite": "ring-of-fire-2e235"
+            "firebaseProject": "ring-of-fire-606ab",
+            "firebaseHostingSite": "ring-of-fire-606ab"
           }
         }
       }

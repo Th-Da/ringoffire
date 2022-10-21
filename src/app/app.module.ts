@@ -23,6 +23,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 /* import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'; */
 
@@ -56,6 +58,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore'; */
     MatCardModule,
     LayoutModule,
     BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     /*     provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideFirestore(() => getFirestore()) */
   ],
